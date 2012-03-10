@@ -1,0 +1,18 @@
+<switchyard xmlns="urn:switchyard-config:switchyard:1.0"
+            xmlns:camel="urn:switchyard-component-camel:config:1.0">
+    <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="camel-rest-binding" targetNamespace="urn:switchyard-quickstart:camel-rest-binding:0.1.0">
+
+        <service name="ExternalClientService" promote="HelloService">
+            <camel:binding.camel configURI="cxfrs://http://localhost:18001/greeter?resourceClasses=org.switchyard.quickstarts.camel.rest.binding.ClientResource"/>
+        </service>
+
+        <service name="InternalGreetingService" promote="GreetingService">
+            <camel:binding.camel configURI="cxfrs://http:///internal?resourceClasses=org.switchyard.quickstarts.camel.rest.binding.GreetingResource"/>
+        </service>
+
+        <reference name="HiddenGreeterService" promote="HelloService/HiddenGreeterService" multiplicity="1..1">
+            <camel:binding.camel configURI="cxfrs://http:///internal?resourceClasses=org.switchyard.quickstarts.camel.rest.binding.GreetingResource"/>
+        </reference>
+
+    </composite>
+</switchyard>
