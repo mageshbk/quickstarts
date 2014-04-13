@@ -75,6 +75,7 @@
         <module>bpel-xts-wsat</module>
         <module>bpm-service</module>
         <module>camel-binding</module>
+        <module>camel-cxf</module>
         <module>camel-jaxb</module>
         <module>camel-amqp-binding</module>
         <module>camel-ftp-binding</module>
